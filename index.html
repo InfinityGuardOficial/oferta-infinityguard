@@ -296,6 +296,13 @@ h1,h2,h3,dt,summary,.preco b{color:#FFFFFF;color:var(--tinta)}
 .gal img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid var(--linha-ouro)}
 .banner{display:block;width:100%;max-width:960px;height:auto;margin:clamp(40px,5vw,64px) auto 0;border-radius:12px;border:1px solid var(--linha-ouro)}
 .gal-prova{margin-top:clamp(36px,5vw,56px)}
+.confianca{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:30px auto 0;max-width:720px;text-align:center}
+.confianca li{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 10px;border:1px solid var(--linha-ouro);border-radius:10px;background:color-mix(in oklab,var(--marca) 6%,transparent)}
+.confianca svg{width:34px;height:34px;color:var(--ouro);margin-bottom:6px}
+.confianca b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta)}
+.confianca span{font-size:13px;line-height:1.35;color:var(--suave)}
+.final .confianca{margin-top:36px}
+@media(max-width:759px){.confianca{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
 .gal-nota{margin-top:18px;font-size:14px;color:var(--suave)}
 @media(max-width:759px){.gal{grid-template-columns:1fr;max-width:460px;margin:auto}}
 </style>
@@ -433,7 +440,12 @@ h1,h2,h3,dt,summary,.preco b{color:#FFFFFF;color:var(--tinta)}
 </ul>
 <p class="preco"><b>R$ 353,12</b><span>no Pix (R$ 176,56 por câmera) · ou 12x de R$ 32,70 sem juros</span></p>
 <a class="btn" href="https://www.infinityguard.com.br/produtos/camera-wi-fi-infinity-guard-dupla-lente-2k/">Comprar meu kit</a>
-<ul class="pagamento" aria-label="Formas de pagamento"><li>Pix</li><li>Visa</li><li>Mastercard</li><li>Elo</li><li>Hipercard</li><li>American Express</li><li>Diners</li></ul><p class="micro">Troca em até 7 dias, com suporte direto da loja.<br>O botão leva você à página do kit na loja oficial.</p>
+<ul class="confianca" aria-label="Garantias da compra">
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="21" width="24" height="18" rx="3"/><path d="M17 21v-5a7 7 0 0 1 14 0v5"/><path d="M24 28v4"/></svg><b>Site seguro</b><span>Conexão protegida (HTTPS)</span></li>
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5 39 11v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="m17 24 5 5 9-10"/></svg><b>Loja oficial</b><span>Compra finalizada em infinityguard.com.br</span></li>
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 20a14 14 0 0 1 25-6l3 3"/><path d="M38 9v8h-8"/><path d="M38 28a14 14 0 0 1-25 6l-3-3"/><path d="M10 39v-8h8"/></svg><b>Troca em 7 dias</b><span>Direto com o nosso suporte</span></li>
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="19" r="11"/><path d="m19 19 3.5 3.5L29 16"/><path d="m17 28-3 14 10-5 10 5-3-14"/></svg><b>Garantia</b><span>Contra defeito de fabricação</span></li>
+</ul><ul class="pagamento" aria-label="Formas de pagamento"><li>Pix</li><li>Visa</li><li>Mastercard</li><li>Elo</li><li>Hipercard</li><li>American Express</li><li>Diners</li></ul><p class="micro">Troca em até 7 dias, com suporte direto da loja.<br>O botão leva você à página do kit na loja oficial.</p>
 </div></div></section>
 
 <section class="faq" id="faq" data-secao="faq"><div class="w">
@@ -450,6 +462,12 @@ h1,h2,h3,dt,summary,.preco b{color:#FFFFFF;color:var(--tinta)}
 <section class="final" id="final" data-secao="final"><div class="w">
 <h2>Proteja sua casa com quem te orienta do começo ao fim</h2>
 <a class="btn" href="https://www.infinityguard.com.br/produtos/camera-wi-fi-infinity-guard-dupla-lente-2k/">Comprar meu kit</a>
+<ul class="confianca" aria-label="Garantias da compra">
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="21" width="24" height="18" rx="3"/><path d="M17 21v-5a7 7 0 0 1 14 0v5"/><path d="M24 28v4"/></svg><b>Site seguro</b><span>Conexão protegida (HTTPS)</span></li>
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5 39 11v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="m17 24 5 5 9-10"/></svg><b>Loja oficial</b><span>Compra finalizada em infinityguard.com.br</span></li>
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 20a14 14 0 0 1 25-6l3 3"/><path d="M38 9v8h-8"/><path d="M38 28a14 14 0 0 1-25 6l-3-3"/><path d="M10 39v-8h8"/></svg><b>Troca em 7 dias</b><span>Direto com o nosso suporte</span></li>
+<li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="19" r="11"/><path d="m19 19 3.5 3.5L29 16"/><path d="m17 28-3 14 10-5 10 5-3-14"/></svg><b>Garantia</b><span>Contra defeito de fabricação</span></li>
+</ul>
 <p class="micro">Ficou em dúvida? Fale direto comigo pelo WhatsApp: <a href="https://wa.me/5531986679178?text=Oi!%20Quero%20saber%20se%20o%20kit%20de%20c%C3%A2meras%20serve%20pra%20minha%20casa.">(31) 98667-9178</a></p>
 </div></section>
 </main>
