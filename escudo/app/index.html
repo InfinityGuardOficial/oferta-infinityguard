@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Escudo Celular</title>
+<meta name="description" content="Escudo Infinity Guard para Android e iPhone: checagem guiada de segurança e detector de golpe em mensagens e links.">
+<meta name="theme-color" content="#0b3d91">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icones/icone-192.png">
+<link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Escudo">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--fundo:#f3f5f9;--cartao:#fff;--texto:#16202e;--suave:#5a6577;--borda:#dfe5ee;--marca:#0b3d91;--marca-texto:#fff;--acento:#0b3d91;--sobre-acento:#fff;
+--critico:#c53030;--alto:#c05621;--medio:#b7791f;--ok:#1f7a4a;--sombra:0 1px 2px rgba(16,24,40,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--fundo:#0d1219;--cartao:#161e29;--texto:#e8edf3;--suave:#9aa7b8;--borda:#263243;--marca:#0b3d91;--acento:#7fb0ff;--sobre-acento:#0d1219;
+--critico:#ff7a7a;--alto:#f6a35c;--medio:#f2c94c;--ok:#5ad19a;--sombra:none}}
+:root[data-theme="dark"]{--fundo:#0d1219;--cartao:#161e29;--texto:#e8edf3;--suave:#9aa7b8;--borda:#263243;--acento:#7fb0ff;--sobre-acento:#0d1219;--critico:#ff7a7a;--alto:#f6a35c;--medio:#f2c94c;--ok:#5ad19a;--sombra:none}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+header{background:var(--marca);color:var(--marca-texto);padding:calc(14px + env(safe-area-inset-top)) 16px 14px}
+header .linha{display:flex;align-items:center;gap:10px;max-width:640px;margin:0 auto}
+header svg{flex:none}
+header h1{font-size:19px;margin:0;line-height:1.2}
+header p{margin:0;font-size:13px;opacity:.85}
+main{max-width:640px;margin:0 auto;padding:16px 16px calc(88px + env(safe-area-inset-bottom))}
+.cartao{background:var(--cartao);border:1px solid var(--borda);border-radius:14px;padding:16px;margin:0 0 14px;box-shadow:var(--sombra)}
+h2{font-size:18px;margin:0 0 8px}
+h3{font-size:16px;margin:0 0 6px}
+.suave{color:var(--suave);font-size:14px}
+button,.botao{font:inherit;border:0;border-radius:12px;padding:12px 16px;min-height:48px;cursor:pointer;background:var(--acento);color:var(--sobre-acento);font-weight:600;width:100%;display:block;text-align:center;text-decoration:none}
+button.sec{background:transparent;color:var(--acento);border:1.5px solid var(--borda)}
+button:focus-visible,textarea:focus-visible,.resp label:focus-within{outline:3px solid var(--acento);outline-offset:2px}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nota{display:flex;align-items:center;gap:16px}
+.nota .num{font-size:46px;font-weight:800;min-width:84px;text-align:center;line-height:1}
+.barra{height:8px;border-radius:99px;background:var(--borda);overflow:hidden;margin-top:8px}
+.barra i{display:block;height:100%;background:var(--acento);width:0}
+.item{border-top:1px solid var(--borda);padding:14px 0}
+.item:first-of-type{border-top:0;padding-top:4px}
+.tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.04em;padding:2px 8px;border-radius:99px;border:1.5px solid currentColor;margin-bottom:6px}
+.Critico{color:var(--critico)}.Alto{color:var(--alto)}.Medio{color:var(--medio)}
+details{margin:6px 0 8px}
+summary{cursor:pointer;color:var(--acento);font-size:14px;font-weight:600;padding:6px 0;min-height:32px}
+.resp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.resp input{position:absolute;opacity:0;pointer-events:none}
+.resp label{display:flex;align-items:center;justify-content:center;min-height:44px;border:1.5px solid var(--borda);border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;background:var(--cartao)}
+.resp input:checked+label{border-color:var(--acento);background:var(--acento);color:var(--sobre-acento)}
+textarea{width:100%;min-height:140px;font:inherit;padding:12px;border-radius:12px;border:1.5px solid var(--borda);background:var(--fundo);color:var(--texto);resize:vertical}
+.resultado{border-radius:12px;padding:14px;margin-top:12px;border:2px solid}
+.resultado.alto{border-color:var(--critico)}.resultado.medio{border-color:var(--medio)}.resultado.baixo{border-color:var(--ok)}
+.resultado h3{margin:0 0 6px}
+.resultado ul{margin:6px 0 0;padding-left:20px}
+.pend{padding-left:20px;margin:8px 0 0}
+.pend li{margin:0 0 6px}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--cartao);border-top:1px solid var(--borda);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav button{background:none;color:var(--suave);font-size:12px;font-weight:600;border-radius:0;padding:8px 4px;min-height:60px;max-width:160px;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button[aria-current="page"]{color:var(--acento)}
+nav svg{width:24px;height:24px}
+.oculto{display:none!important}
+.aviso{font-size:13px;color:var(--suave);margin-top:10px}
+.escolha{display:grid;gap:10px}
+footer{color:var(--suave);font-size:12px;text-align:center;margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="linha">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 8 13v17c0 15 10 26 24 30 14-4 24-15 24-30V13L32 4z" fill="#fff" opacity=".95"/><path d="M22 33l7 7 14-15" stroke="#0b3d91" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><h1>Escudo Infinity Guard</h1><p>Segurança onde você estiver</p></div>
+  </div>
+</header>
+
+<main>
+  <!-- INÍCIO -->
+  <section id="tela-inicio" aria-labelledby="t-inicio">
+    <div class="cartao">
+      <h2 id="t-inicio">Seu celular está protegido?</h2>
+      <div class="nota">
+        <div class="num" id="inicio-nota" aria-live="polite">–</div>
+        <div>
+          <div id="inicio-resumo" class="suave">Faça a checagem guiada: leva uns 10 minutos.</div>
+          <div class="barra" aria-hidden="true"><i id="inicio-barra"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="cartao escolha">
+      <button type="button" data-ir="checar">Checar meu celular</button>
+      <button type="button" class="sec" data-ir="golpe">É golpe? Verificar mensagem ou link</button>
+    </div>
+    <div class="cartao">
+      <h3>Como funciona</h3>
+      <p class="suave">Nenhum app consegue "varrer" outro app no iPhone, e no Android quem faz isso é o Google Play Protect. O que mais rouba dinheiro no Brasil são golpes que dependem de uma configuração aberta ou de um clique. O Escudo te leva a cada ajuste que fecha essas portas e analisa mensagens suspeitas antes de você clicar.</p>
+      <p class="suave">Tudo fica só neste aparelho: nada é enviado para a internet.</p>
+    </div>
+    <div class="cartao" id="cartao-instalar">
+      <h3>Colocar na tela inicial</h3>
+      <p class="suave" id="instalar-texto">No iPhone: toque em Compartilhar e depois em "Adicionar à Tela de Início". No Android: menu ⋮ do Chrome e depois "Instalar app" ou "Adicionar à tela inicial".</p>
+      <button type="button" id="btn-instalar" class="sec oculto">Instalar o Escudo</button>
+    </div>
+  </section>
+
+  <!-- CHECAGEM -->
+  <section id="tela-checar" class="oculto" aria-labelledby="t-checar">
+    <div class="cartao">
+      <h2 id="t-checar">Checagem guiada</h2>
+      <p class="suave">Qual é o seu celular?</p>
+      <div class="duas" role="group" aria-label="Tipo de celular">
+        <button type="button" class="sec" data-aparelho="android" aria-pressed="false">Android</button>
+        <button type="button" class="sec" data-aparelho="iphone" aria-pressed="false">iPhone</button>
+      </div>
+    </div>
+    <div class="cartao" id="lista-cartao">
+      <div class="nota" style="margin-bottom:8px">
+        <div class="num" id="check-nota">–</div>
+        <div><div id="check-resumo" class="suave"></div><div class="barra" aria-hidden="true"><i id="check-barra"></i></div></div>
+      </div>
+      <div id="lista"></div>
+    </div>
+    <div class="cartao oculto" id="pendencias-cartao">
+      <h3>O que fazer primeiro</h3>
+      <ol class="pend" id="pendencias"></ol>
+      <button type="button" class="sec" id="btn-zerar" style="margin-top:12px">Recomeçar a checagem</button>
+    </div>
+  </section>
+
+  <!-- GOLPE -->
+  <section id="tela-golpe" class="oculto" aria-labelledby="t-golpe">
+    <div class="cartao">
+      <h2 id="t-golpe">É golpe?</h2>
+      <p class="suave">Cole aqui a mensagem ou o link que você recebeu (WhatsApp, SMS, e-mail). O Escudo não abre o link.</p>
+      <label for="texto-golpe" class="oculto">Mensagem ou link</label>
+      <textarea id="texto-golpe" placeholder="Ex.: Oi mãe, troquei de número..." autocomplete="off" spellcheck="false"></textarea>
+      <div class="duas" style="margin-top:10px">
+        <button type="button" class="sec" id="btn-colar">Colar</button>
+        <button type="button" id="btn-analisar">Verificar</button>
+      </div>
+      <div id="resultado" aria-live="polite"></div>
+      <p class="aviso">A análise procura os sinais dos golpes mais comuns. Mesmo com resultado "baixo", nunca passe senha ou código, e na dúvida ligue para o número oficial que está no cartão ou no site da empresa.</p>
+    </div>
+  </section>
+
+  <footer>Escudo Infinity Guard · versão <span id="versao"></span></footer>
+</main>
+
+<nav aria-label="Telas">
+  <button type="button" data-ir="inicio" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8.5 8 9.5 4.5-1 8-4.5 8-9.5V6l-8-3z"/></svg>Início</button>
+  <button type="button" data-ir="checar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Checagem</button>
+  <button type="button" data-ir="golpe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>É golpe?</button>
+</nav>
+
+<script src="golpe.js"></script>
+<script src="checagens.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
