@@ -1,5 +1,5 @@
 /* Escudo Infinity Guard - funciona sem internet depois da primeira visita. */
-var CACHE = 'escudo-celular-1.0.0';
+var CACHE = 'escudo-celular-1.1.0';
 var ARQUIVOS = ['./', './index.html', './app.js', './golpe.js', './checagens.js', './manifest.webmanifest',
   './icones/icone-192.png', './icones/icone-512.png', './icones/apple-touch-icon.png'];
 self.addEventListener('install', function (e) {
