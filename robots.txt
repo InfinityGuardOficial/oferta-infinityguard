@@ -1,0 +1,25 @@
+# Infinity Guard · oferta.infinityguard.com.br
+# Buscadores e assistentes de IA podem ler a página pública.
+User-agent: *
+Allow: /
+Disallow: /escudo/app/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://oferta.infinityguard.com.br/sitemap.xml
