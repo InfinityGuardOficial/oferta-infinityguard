@@ -1,0 +1,16 @@
+{
+ "slug": "camera-ptz-vale-a-pena-para-comercio",
+ "titulo": "Câmera PTZ vale a pena para comércio com área externa grande?",
+ "descricao": "Quando a câmera PTZ faz sentido no comércio: giro de 355°, zoom 20x e o que considerar antes de comprar.",
+ "data": "2026-11-19",
+ "resumo": "Câmera fixa mostra o fundo de longe. A PTZ gira e aproxima. Veja quando ela compensa e quando uma fixa resolve.",
+ "secoes": [
+  {"titulo": "O que é uma câmera PTZ", "paragrafos": ["PTZ vem de pan, tilt e zoom: a câmera gira para os lados, inclina para cima e para baixo e aproxima a imagem.", "A Câmera ASECAM PTZ 4K 8MP gira 355° e tem zoom 20x."]},
+  {"titulo": "Quando ela compensa", "paragrafos": ["Em áreas externas grandes, uma câmera fixa pega o fundo de longe. A PTZ aproxima o ponto que importa.", "Ela olha um lado de cada vez. Quem precisa ver tudo ao mesmo tempo usa uma câmera fixa junto."]}
+ ],
+ "faq": [
+  {"pergunta": "A câmera PTZ funciona com Wi-Fi?", "resposta": "A Câmera ASECAM PTZ 4K 8MP tem Wi-Fi e PoE, como diz o nome do produto."},
+  {"pergunta": "Quem instala a câmera?", "resposta": "A instalação fica com o seu eletricista ou técnico, seguindo o manual que acompanha o produto."}
+ ],
+ "produto": {"nome": "Câmera ASECAM PTZ 4K 8MP — Wi-Fi, PoE e Rastreamento Inteligente", "link": "https://infinityguard.com.br/produtos/camera-asecam-ptz-4k-8mp-wifi-poe/", "foto": "https://raw.githubusercontent.com/InfinityGuardOficial/infinity-guard-sistemas/midia/acervo/loja/ptz4k/1.jpg"}
+}
